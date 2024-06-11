@@ -77,7 +77,7 @@ const Message = (props: Props) => {
                 <BoxMessage className="boxMessage">
                   <TextMessage className="textMessage" check={item?.role}>
                     <button
-                      onClick={(e) =>
+                      onClick={() =>
                         handleCheckVolume(item?.id, item.voiceUrl)
                       }
                       className="buttonVolume"

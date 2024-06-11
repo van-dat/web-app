@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "./ContentAssistant.scss";
 import DropdownCustom from "../dropdown/DropdownCustom";
 import Message from "../message/Message";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Model from "../model/Model";
 import {
   addConversation,
