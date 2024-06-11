@@ -237,7 +237,7 @@ const ContentAssistant = () => {
             <div
               className="boxBack"
               onClick={() => {
-                navigate("/web-app");
+                navigate("/");
               }}
             >
               <ArrowLeftShort size={45} color="white" />
