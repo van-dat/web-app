@@ -86,6 +86,7 @@ const ContentAssistant = () => {
   };
 
   const addMessage = async () => {
+    if (textInput == "" || textInput == undefined) return;
     if (dataMessage[0] == undefined) {
       setModalShow(true);
       return;
@@ -168,7 +169,7 @@ const ContentAssistant = () => {
                 onClick={() => handleAsk()}
                 className="buttonQuestion"
               >
-                Ask Question
+                Ask Questions
               </ButtonQuestion>
               <TitleSession className="titleSession">
                 {dataAssistant?.position} Lesson
@@ -231,6 +232,7 @@ const ContentAssistant = () => {
             setTextInput={setTextInput}
             setStartMessage={setStartMessage}
             setShow={setShow}
+            setConversations = {setDataMessage}
           />
         ) : (
           <div className="contentRight">
@@ -251,7 +253,7 @@ const ContentAssistant = () => {
                   onClick={handleBegin}
                   className="btnBegin"
                 >
-                  begin
+                  Begin
                 </BtnBegin>
               </div>
             </BoxImage>

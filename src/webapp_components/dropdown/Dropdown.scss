@@ -45,7 +45,8 @@
 }
 
 .listDown {
-  width: 533px;
+  max-width: 533px;
+  width: 100%;
 
   @media screen and (max-width: 560px) {
     width: 100%;

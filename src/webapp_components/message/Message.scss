@@ -41,13 +41,14 @@
     text-align: center;
     cursor: pointer;
   }
-  .buttonTranslate {
-    min-width: 30px;
-    min-height: 30px;
+  .button {
+    width: 32px;
+    height: 32px;
     border-radius: 16px;
     border: none;
     background: rgba(125, 125, 125, 1);
     position: relative;
+    cursor: pointer;
     .imageTranslate {
       position: absolute;
       top: 32%;
@@ -57,7 +58,6 @@
       position: absolute;
       top: 27%;
       left: 29%;
-      
     }
   }
   .inputSend {
@@ -86,7 +86,7 @@
     border: none;
   }
   .boxMessage {
-    
+   
     .textMessage {
       font-size: 19px;
 

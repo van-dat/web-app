@@ -32,11 +32,12 @@
   }
 }
 #LayoutContent {
-  background-color: radial-gradient(
+  background: radial-gradient(
     93.34% 290.77% at 97.83% 96.62%,
     #0f1425 33.34%,
     #19547e 100%
   );
+  
   margin-top: 10rem;
   border: 6px solid #000;
   flex-direction: row;
@@ -139,28 +140,24 @@
     .lessonLayout {
       width: 100%;
       @media screen and (min-width: 993px) {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        // -ms-overflow-style: none;
+        // scrollbar-width: none;
         max-height: 250px;
       }
-      @media screen and (max-width: 1280px) {
-        padding-right: 20px;
+      padding-right: 20px;
+      max-height: 320px;
+      &::-webkit-scrollbar {
+        width: 6px;
+        background: transparent;
+        border: 1px solid rgba(160, 160, 160, 1);
+        border-radius: 16px;
       }
-      @media screen and (max-width: 993px) {
-        max-height: 320px;
-        &::-webkit-scrollbar {
-          width: 6px;
-          background: transparent;
-          border: 1px solid rgba(160, 160, 160, 1);
-          border-radius: 16px;
-        }
 
-        &::-webkit-scrollbar-thumb {
-          background: rgba(217, 217, 217, 1);
-          width: 5px;
-          border-radius: 16px;
-          height: 4px;
-        }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(217, 217, 217, 1);
+        width: 5px;
+        border-radius: 16px;
+        height: 4px;
       }
     }
   }
@@ -216,7 +213,7 @@
       justify-content: center;
       .btnBegin {
         width: 75%;
-       
+
         height: 70px;
         font-family: Quicksand;
         font-size: 47px;
@@ -227,7 +224,5 @@
         box-shadow: 0px 0px 24px 4px rgba(1, 215, 255, 0.4);
       }
     }
-    
   }
-  
 }

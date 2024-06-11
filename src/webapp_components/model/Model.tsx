@@ -23,10 +23,25 @@ const Model = (props: Props) => {
               Download the app to use the chat <br /> voice feature.
             </DownloadTitle>
             <DownloadBtn>
-              <BtnAppStore>
-                <img src={appStore} width={250} height={84} alt="image-app-store" />
+              <BtnAppStore
+                onClick={() => {
+                  window.location.href =
+                    "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355";
+                }}
+              >
+                <img
+                  src={appStore}
+                  width={250}
+                  height={84}
+                  alt="image-app-store"
+                />
               </BtnAppStore>
-              <BtnChPlay>
+              <BtnChPlay
+                onClick={() => {
+                  window.location.href =
+                    "https://play.google.com/store/apps/details?id=com.english7esl";
+                }}
+              >
                 <img src={chPlay} width={279} height={84} alt="image-chPlay" />
               </BtnChPlay>
             </DownloadBtn>
