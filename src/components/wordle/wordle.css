@@ -1,0 +1,22 @@
+@media only screen and (max-width: 376px) {
+  .wordle-form {
+    padding: 25px !important;
+  }
+
+  .words .word.is-wordle {
+    width: 96px;
+  }
+}
+
+
+.wordle-form{
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px 0;
+  box-sizing: border-box;
+  color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+}

@@ -1,0 +1,13 @@
+.wordFinder-form {
+  max-width: 700px !important;
+  @media screen and (max-width: 767px) {
+    margin: 0 auto !important;
+  }
+}
+
+.wordFinder-result {
+  @media screen and (max-width: 940px) {
+    max-width: 920px !important;
+    margin: 24px 0 !important;
+  }
+}

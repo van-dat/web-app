@@ -1,0 +1,54 @@
+.dropDown {
+  margin: 8px 0;
+  width: 100%;
+
+  @media screen and (max-width: 993px) {
+    margin: 8px 0;
+    max-width: 100%;
+  }
+}
+
+.description {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 27px;
+  @media screen and (max-width: 993px) {
+    font-size: 18px;
+  }
+}
+.labelText {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 28.75px;
+  @media screen and (max-width: 993px) {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+.showItem {
+  max-height: 500px !important;
+  overflow: hidden;
+  opacity: 1 !important;
+  transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.contentAssistant {
+  display: flex;
+}
+
+.assistantDetail {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.listDown {
+  width: 533px;
+
+  @media screen and (max-width: 560px) {
+    width: 100%;
+    max-width: 533px;
+  }
+}

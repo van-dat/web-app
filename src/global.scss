@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+* {
+  box-sizing: border-box;
+}
+@import "./node_modules/bulma/bulma";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+body {
+  padding: 0 !important;
+}
+.words {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  .word {
+    border: 1px solid #f7f8f9;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 7px;
+    font-size: 20px;
+    background-color: #f7f8f9;
+
+    &.cursor {
+      cursor: pointer;
+    }
+
+    span:first-child {
+      font-weight: 400;
+      text-transform: lowercase;
+      color: #0b3f51;
+    }
+
+    sub {
+      color: #0b3f51;
+    }
+
+    &.is-wordle {
+      width: 98px;
+    }
+
+    .point {
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.panel {
+  background-color: #fff;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+    0 0px 0 1px rgba(10, 10, 10, 0.02) !important;
+}
+
+.panel-block {
+  display: block !important;
+}
+
+.load-more {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.button {
+  padding: calc(0.5em - 1px) 1em !important;
+}
+
+button.is-warning {
+  background-color: #ffc31d !important;
+}
+
+.btn-dropdown-item {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-dropdown-item:hover,
+.btn-dropdown-item.dropdown-item.is-active {
+  background-color: #0077a3;
+  color: #fff;
+}
+strong {
+  color: inherit;
+}
+
+.content {
+  ol {
+    margin-left: 0;
+  }
+}
+
+// css dialog
+
+.custom-modal-container {
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal {
+  position: fixed;
+  top: 88px;
+  right: 20px;
+  left: 20px;
+  max-width: 640px;
+  height: 72vh;
+  background-color: white;
+  border-radius: 3px;
+  display: block;
+  margin: auto;
+  animation-name: showDialog;
+  animation-duration: 0.3s;
+  overflow: hidden;
+  color: #0b3f51;
+}
+@keyframes showDialog {
+  from {
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+.custom-modal-header {
+  background-color: #0077a3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.custom-modal-header strong {
+  margin: 1em;
+  padding-left: 15px;
+}
+.custom-modal-header strong span {
+  background-color: #ffc31d;
+  color: black;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.custom-modal-header p {
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 8px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.custom-modal-header p > span {
+  margin-bottom: 4px;
+}
+
+.custom-modal-content {
+  padding: 30px 20px 30px 30px;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  max-height: calc(100% - 56px);
+  overflow-y: auto;
+}
+
+.custom-modal-content ol {
+  margin-left: 20px;
+}
+
+// click outside
+.click-outside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.inside-article .panel-block:not(.is-skeleton) {
+  padding: 10px 0;
+  margin: 0 -7px;
+}
+
+.inside-article .panel {
+  box-shadow: none !important;
+}
+
+// sort
+.btn-dropdown-item,
+.dropdown-trigger {
+  svg {
+    margin-bottom: -2px;
+    margin-right: 5px;
+  }
+}
+
+.full-container {
+  max-width: 1344px;
+  margin: 0 auto;
+}
+.widget {
+  position: relative;
+}
+
+.wrap-finder-form {
+  background-color: #0077a3;
+  padding: 20px 25px 30px 25px;
+  border-radius: 8px;
+
+  h4 {
+    color: #fff;
+    text-align: center;
+    margin: 0px 0 10px;
+  }
+}
+
+#finder {
+  max-width: 1344px;
+  margin: 0 auto;
+}
+.widget #form-finder,
+.widget #form-wordle {
+  margin: -25px;
+}
+
+.box-header-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  .title-result {
+    font-size: 22px;
+  }
+}
+
+.table {
+  color: inherit !important;
+}
+
+// tooltip
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.color-black {
+  color: black;
+}

@@ -1,0 +1,27 @@
+#modal_delete {
+  .modal-background {
+    z-index: 1;
+  }
+  .modal-card {
+    z-index: 2;
+  }
+}
+#form_paraphraser {
+  .header_form {
+    display: block;
+  }
+  .is-w-50 {
+    width: 50%;
+  }
+}
+
+.paraphraser-tabs {
+  ul li {
+    &.is-hide {
+      opacity: 0.7;
+    }
+    a {
+      text-transform: capitalize;
+    }
+  }
+}

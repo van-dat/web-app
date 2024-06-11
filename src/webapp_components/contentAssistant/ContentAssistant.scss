@@ -1,0 +1,233 @@
+.layoutImg {
+  display: none;
+  @media screen and (max-width: 993px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    background: linear-gradient(
+      0deg,
+      rgba(45, 45, 45, 0) 0%,
+      rgba(88, 133, 174, 0.2162) 27.26%,
+      rgba(15, 189, 200, 0.46) 48.1%,
+      rgba(147, 147, 147, 0) 100%
+    );
+    height: 60%;
+    width: 100%;
+  }
+  .userImageMb {
+    display: none;
+    width: 100%;
+    @media screen and (max-width: 993px) {
+      display: contents;
+    }
+  }
+}
+#LayoutContent {
+  background-color: radial-gradient(
+    93.34% 290.77% at 97.83% 96.62%,
+    #0f1425 33.34%,
+    #19547e 100%
+  );
+  margin-top: 10rem;
+  border: 6px solid #000;
+  flex-direction: row;
+  @media screen and (max-width: 993px) {
+    border: none;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 44px;
+    margin-top: 0;
+  }
+
+  .contentLeft {
+    width: 60%;
+    padding: 20px 0 20px 20px;
+    @media screen and (max-width: 1280px) {
+      width: 55%;
+    }
+    @media screen and (max-width: 993px) {
+      width: 100%;
+      align-items: center;
+      padding: 0;
+    }
+
+    .contentAssistant {
+      @media screen and (max-width: 993px) {
+        justify-content: center;
+        align-items: center;
+      }
+      .assistantDetail {
+        @media screen and (max-width: 993px) {
+          align-items: center;
+          text-align: center;
+        }
+
+        .TitleAssistant {
+          font-size: 47px;
+          font-weight: 700;
+          line-height: 58.75px;
+          @media screen and (max-width: 993px) {
+            font-size: 32px;
+            line-height: 40px;
+          }
+        }
+        .DetailAssistant {
+          border-left: 5px solid #fff;
+
+          @media screen and (max-width: 993px) {
+            border-left: none;
+          }
+        }
+        .DescriptionAssistant {
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 27px;
+          @media screen and (max-width: 993px) {
+            font-size: 18px;
+            line-height: 27px;
+          }
+        }
+        .buttonQuestion {
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 37.5px;
+          @media screen and (max-width: 993px) {
+            font-size: 25px;
+            line-height: 31.25px;
+          }
+        }
+        .titleSession {
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 37.5px;
+          @media screen and (max-width: 993px) {
+            font-size: 23px;
+            line-height: 28.75px;
+            padding-top: 44px;
+          }
+        }
+      }
+    }
+    .labelChose {
+      font-family: Quicksand;
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 28.75px;
+      color: rgba(201, 201, 201, 1);
+      margin: 0;
+      @media screen and (max-width: 993px) {
+        display: none;
+        font-size: 18px;
+        line-height: 27px;
+      }
+    }
+    .userImagePc {
+      @media screen and (max-width: 993px) {
+        display: none;
+      }
+    }
+
+    .lessonLayout {
+      width: 100%;
+      @media screen and (min-width: 993px) {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        max-height: 250px;
+      }
+      @media screen and (max-width: 1280px) {
+        padding-right: 20px;
+      }
+      @media screen and (max-width: 993px) {
+        max-height: 320px;
+        &::-webkit-scrollbar {
+          width: 6px;
+          background: transparent;
+          border: 1px solid rgba(160, 160, 160, 1);
+          border-radius: 16px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(217, 217, 217, 1);
+          width: 5px;
+          border-radius: 16px;
+          height: 4px;
+        }
+      }
+    }
+  }
+
+  .dropdown button {
+    min-width: 265px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    @media screen and (max-width: 993px) {
+      font-size: 16px;
+    }
+  }
+  .dropdown .dropdown-item-button {
+    max-width: 100%;
+  }
+
+  .userImagePc {
+    max-width: 265px;
+
+    @media screen and (max-width: 993px) {
+      display: none;
+    }
+  }
+  .contentRight {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    position: relative;
+    @media screen and (max-width: 993px) {
+      display: none;
+    }
+    .boxBack {
+      position: absolute;
+      top: 40px;
+      left: 20px;
+      cursor: pointer;
+    }
+    .imageRight {
+      width: 100%;
+      img {
+        max-width: 550px;
+        width: 100%;
+      }
+    }
+
+    .boxBtn {
+      display: flex;
+      justify-content: center;
+      .btnBegin {
+        width: 75%;
+       
+        height: 70px;
+        font-family: Quicksand;
+        font-size: 47px;
+        font-weight: 600;
+        line-height: 58.75px;
+        border-radius: 27px;
+        color: white;
+        box-shadow: 0px 0px 24px 4px rgba(1, 215, 255, 0.4);
+      }
+    }
+    
+  }
+  
+}
