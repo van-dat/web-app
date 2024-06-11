@@ -9,8 +9,8 @@ import { Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <HomeLayout>
-        <HomeTheme theme1={theme1}></HomeTheme>
+      <HomeLayout >
+        <HomeTheme className = "theme1" theme1={theme1}></HomeTheme>
         <HomeTheme2 theme2={theme2}></HomeTheme2>
 
         <Header />
@@ -28,15 +28,15 @@ const HomeLayout = styled.div`
   position: relative;
 `;
 const HomeTheme: any = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 600px;
-  width: 100%;
-  max-height: 500px;
-  height: 100%;
-  rotate: 14.36 deg;
-  background: url(${(props: any) => props.theme1}) no-repeat;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // max-width: 600px;
+  // width: 100%;
+  // max-height: 500px;
+  // height: 100%;
+  // rotate: 14.36 deg;
+  // background: url(${(props: any) => props.theme1}) no-repeat;
 `;
 const HomeTheme2: any = styled.div`
   position: absolute;

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { ChevronDown } from "react-bootstrap-icons";
+import { ChevronDown, ChevronUp } from "react-bootstrap-icons";
 import styled from "styled-components";
 import "./Dropdown.scss";
 type Props = {
   titleTopic: string;
   lessons: any;
   setTopicLesson: any;
-  show: any;
+  show: number;
   setShow: any;
   handleBegin: any;
   width: any;
@@ -24,12 +24,15 @@ const DropdownCustom = (props: Props) => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [choesLession, setChoesLession] = useState<number>(1);
   const handleChoseLesson = (lessonId: any, titleLesson: string) => {
-    setTopicLesson(titleLesson), setChoesLession(lessonId);
-    if (width < 994 && titleLesson != "") {
-      handleBegin(titleLesson);
-      const element = document.getElementById("message");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+    if (show !== 0 && show !== 2) {
+      setShow(1);
+      setTopicLesson(titleLesson), setChoesLession(lessonId);
+      if (width < 994 && titleLesson != "") {
+        handleBegin(titleLesson);
+        const element = document.getElementById("message");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };
@@ -47,7 +50,11 @@ const DropdownCustom = (props: Props) => {
             {lessons?.length} Lessons
           </Description>
         </TitleDropDown>
-        <ChevronDown color="white" size={20} />
+        {!isShow ? (
+          <ChevronDown color="white" size={20} />
+        ) : (
+          <ChevronUp color="white" size={20} />
+        )}
       </LayoutDropDown>
       <DropDownList className={`${isShow && "showItem"} listDown`}>
         {lessons.map((item: any, index: number) => (
@@ -57,7 +64,6 @@ const DropdownCustom = (props: Props) => {
             key={index}
             onClick={() => {
               handleChoseLesson(item.lessonId, item.titleLesson);
-              setShow(1);
             }}
             choes={item.lessonId}
           >

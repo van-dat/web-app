@@ -20,6 +20,7 @@ type Props = {
   textInput: string;
   setStartMessage: any;
   setShow: any;
+  setConversations: any;
 };
 
 const Message = (props: Props) => {
@@ -33,6 +34,7 @@ const Message = (props: Props) => {
     textInput,
     setStartMessage,
     setShow,
+    setConversations,
   } = props;
   const [audio] = useState(new Audio(""));
   const [checkVolume, setCheckVolume] = useState<number>();
@@ -59,6 +61,7 @@ const Message = (props: Props) => {
             onClick={() => {
               setShow();
               setStartMessage(false);
+              setConversations([]);
             }}
           >
             <ArrowLeftShort size={45} color="white" />
@@ -76,25 +79,24 @@ const Message = (props: Props) => {
                 )}
                 <BoxMessage className="boxMessage">
                   <TextMessage className="textMessage" check={item?.role}>
-                    <button
-                      onClick={() =>
-                        handleCheckVolume(item?.id, item.voiceUrl)
-                      }
-                      className="buttonVolume"
-                    >
-                      <img
-                        src={checkVolume === item?.id ? pause : volumeIcon}
-                        alt="iconVolume"
-                      />
-                    </button>
+                    {item.role == "assistant" && (
+                      <button
+                        onClick={() =>
+                          handleCheckVolume(item?.id, item.voiceUrl)
+                        }
+                        className="buttonVolume"
+                      >
+                        <img
+                          src={checkVolume === item?.id ? pause : volumeIcon}
+                          alt="iconVolume"
+                        />
+                      </button>
+                    )}
                     {item?.content}
                   </TextMessage>
                 </BoxMessage>
                 {item?.role == "assistant" ? (
-                  <button
-                    onClick={() => setModalShow(true)}
-                    className="buttonTranslate"
-                  >
+                  <button onClick={() => setModalShow(true)} className="button">
                     <img
                       src={translateIcon}
                       className="imageTranslate"
@@ -102,7 +104,7 @@ const Message = (props: Props) => {
                     />
                   </button>
                 ) : (
-                  <button className="buttonTranslate">
+                  <button onClick={() => setModalShow(true)} className="button">
                     <img
                       src={light}
                       className="imagelight"
@@ -127,7 +129,11 @@ const Message = (props: Props) => {
             onChange={(e) => setTextInput(e.target.value)}
             value={textInput}
           />
-          <button onClick={() => actionSend()} className="buttonSend">
+          <button
+            disabled={textInput == "" ? true : false}
+            onClick={() => actionSend()}
+            className="buttonSend"
+          >
             <img src={sendIcon} alt="icon-send" />
           </button>
         </FormSend>
@@ -172,8 +178,8 @@ const Box: any = styled.div`
     props.check == "assistant" ? "start" : "end"};
 `;
 const BoxMessage: any = styled.div`
+  max-width: calc(100% - 50px);
   display: flex;
-  max-width: 300px;
   justify-content: start;
   align-items: start;
 `;

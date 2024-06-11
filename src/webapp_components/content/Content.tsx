@@ -87,7 +87,7 @@ const Content = () => {
                   </FormFlag>
                 </FormUser>
                 <AssistantName>{item.assistantName}</AssistantName>
-                <AssistantType>Tutor</AssistantType>
+                <AssistantType>Tutors</AssistantType>
                 <AssistantLevel>{item.position}</AssistantLevel>
               </ItemAssistant>
             ))}
@@ -172,7 +172,7 @@ const ListAssistant = styled.div`
 `;
 const ItemAssistant = styled.div`
   width: 191px;
-  height: 191px;
+  max-height: 200px;
   padding: 12px 16px 0px 16px;
   gap: 5px;
   border-radius: 25px;
