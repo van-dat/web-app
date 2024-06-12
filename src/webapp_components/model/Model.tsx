@@ -20,7 +20,7 @@ const Model = (props: Props) => {
         <Modal.Body>
           <DownloadLayout>
             <DownloadTitle>
-              Download the app to this feature.
+              Download the app to use this feature.
             </DownloadTitle>
             <DownloadBtn>
               <BtnAppStore

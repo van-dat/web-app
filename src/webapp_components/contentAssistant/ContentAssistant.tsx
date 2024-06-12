@@ -15,8 +15,11 @@ import { ArrowLeftShort } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import ThreeDot from "../threeDot/ThreeDot";
 import { checkSpace } from "../functions/const";
+import { ScrollTop } from "../functions/scrollTop";
 
 const ContentAssistant = () => {
+  let scrollMessage = document.getElementById("layoutMessage");
+
   const navigate = useNavigate();
   const dataLocal = localStorage.getItem("data") || "";
   const dataAssistant = dataLocal ? JSON.parse(dataLocal) : null;
@@ -47,6 +50,7 @@ const ContentAssistant = () => {
     setWidth(window.innerWidth);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
@@ -90,6 +94,9 @@ const ContentAssistant = () => {
         role: "animation",
       },
     ]);
+
+    ScrollTop(scrollMessage, scrollToBottom);
+
     const result = await addConversation({
       conversationId: conversation.conversationId,
       message: textInput,
@@ -114,7 +121,12 @@ const ContentAssistant = () => {
         },
       ]);
     }
+    ScrollTop(scrollMessage, scrollToBottom);
+
     setCheckInput(false);
+  };
+  const scrollToBottom = (element: any) => {
+    element.scrollTop = element.scrollHeight - element.clientHeight;
   };
 
   const handleBegin = async (value?: string) => {
@@ -258,7 +270,7 @@ const ContentAssistant = () => {
             <div
               className="boxBack"
               onClick={() => {
-                navigate("/");
+                navigate(-1);
               }}
             >
               <ArrowLeftShort size={45} color="white" />

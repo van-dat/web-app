@@ -77,8 +77,6 @@ const Content = () => {
                   <div className="box-image">
                     <img
                       src={item.avatarUrl}
-                      width={90}
-                      height={90}
                       alt="assistant"
                     />
                   </div>
@@ -168,11 +166,11 @@ const BackgroundAssistant = styled.div`
 `;
 const ListAssistant = styled.div`
   display: grid;
-  gap: 16px;
+  
 `;
 const ItemAssistant = styled.div`
-  width: 191px;
-  max-height: 200px;
+  max-width: 191px;
+  max-height: 250px;
   padding: 12px 16px 0px 16px;
   gap: 5px;
   border-radius: 25px;
