@@ -58,7 +58,7 @@ const ContentAssistant = () => {
   useEffect(() => {
     setShow(5);
     fetchData();
-  }, [dataAssistant?.positionId]);
+  }, []);
 
   const handleChoesCategory = (value: string, item: any) => {
     setShow(3);
