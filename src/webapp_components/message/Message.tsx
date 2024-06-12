@@ -63,7 +63,7 @@ const Message = (props: Props) => {
         </div>
       )}
       {
-        <LayoutMessage id="layoutMessage">
+        <LayoutMessage id="layoutMessage" className="layoutMessage">
           <div
             className="boxBack"
             onClick={() => {
@@ -172,9 +172,7 @@ const LayoutMessage = styled.div`
   display: flex;
   max-height: 500px;
   height: 100%;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+ 
   gap: 32px;
   flex-direction: column;
 `;

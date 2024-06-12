@@ -132,6 +132,10 @@ const ContentAssistant = () => {
   const handleBegin = async (value?: string) => {
     setShow(0);
     setTopicLesson("");
+    if(width < 994) {
+      window.scrollTo(0, 1300);
+    }
+    
     await CreateConversations(value);
   };
 
