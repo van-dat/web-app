@@ -36,6 +36,7 @@
     93.34% 290.77% at 97.83% 96.62%,
     #0f1425 33.34%,
     #19547e 100%
+    
   );
   
   margin-top: 10rem;
@@ -44,14 +45,14 @@
   @media screen and (max-width: 993px) {
     border: none;
     flex-direction: column;
-    background-color: transparent;
+    background: transparent;
     gap: 44px;
     margin-top: 0;
   }
 
   .contentLeft {
     width: 60%;
-    padding: 20px 0 20px 20px;
+    padding: 20px;
     @media screen and (max-width: 1280px) {
       width: 55%;
     }
@@ -144,7 +145,7 @@
         // scrollbar-width: none;
         max-height: 250px;
       }
-      padding-right: 20px;
+      padding-right: 12px;
       max-height: 320px;
       &::-webkit-scrollbar {
         width: 6px;

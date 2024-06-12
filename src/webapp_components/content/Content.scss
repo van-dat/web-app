@@ -6,6 +6,8 @@
       gap: 0px;
     }
     .boxImage {
+      z-index: 10;
+
       @media screen and (max-width: 993px) {
         position: relative;
         bottom: -50px;

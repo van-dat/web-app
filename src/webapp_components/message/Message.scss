@@ -9,7 +9,6 @@
   @media screen and (max-width: 993px) {
     width: 100%;
     min-height: 80vh;
-    padding: 20px;
     max-width: 533px;
     margin: 0 auto;
   }
@@ -30,9 +29,7 @@
     top: 10px;
     left: 20px;
     cursor: pointer;
-    @media screen and (max-width: 993px) {
-      display: none;
-    }
+    
   }
 
   .buttonVolume {
