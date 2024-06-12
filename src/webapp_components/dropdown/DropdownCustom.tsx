@@ -29,10 +29,7 @@ const DropdownCustom = (props: Props) => {
       setTopicLesson(titleLesson), setChoesLession(lessonId);
       if (width < 994 && titleLesson != "") {
         handleBegin(titleLesson);
-        const element = document.getElementById("message");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        
       }
     }
   };

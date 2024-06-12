@@ -49,9 +49,9 @@ const Message = (props: Props) => {
     setCheckVolume(checkVolume === idCheck ? null : idCheck);
   };
 
-  const handleEnter = (e) => {
+  const handleEnter = async (e) => {
     if (e.keyCode == 13 && !checkInput && !checkSpace(textInput)) {
-      actionSend();
+      await actionSend();
     }
   };
 
@@ -63,7 +63,7 @@ const Message = (props: Props) => {
         </div>
       )}
       {
-        <LayoutMessage>
+        <LayoutMessage id="layoutMessage" className="layoutMessage">
           <div
             className="boxBack"
             onClick={() => {
@@ -171,9 +171,8 @@ const LayoutContentRight = styled.div`
 const LayoutMessage = styled.div`
   display: flex;
   max-height: 500px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  height: 100%;
+ 
   gap: 32px;
   flex-direction: column;
 `;
