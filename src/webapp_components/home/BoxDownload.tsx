@@ -13,8 +13,11 @@ const BoxDownload = () => {
         <DownloadBtn className="boxDownload">
           <BtnAppStore
             onClick={() => {
-              window.location.href =
-                "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355";
+              window.open(
+                "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355",
+                "_blank",
+                "noopener,noreferrer"
+              );
             }}
             className="btnDownload"
           >
@@ -22,8 +25,11 @@ const BoxDownload = () => {
           </BtnAppStore>
           <BtnChPlay
             onClick={() => {
-              window.location.href =
-                "https://play.google.com/store/apps/details?id=com.english7esl";
+              window.open(
+                "https://play.google.com/store/apps/details?id=com.english7esl",
+                "_blank",
+                "noopener,noreferrer"
+              );
             }}
             className="btnDownload"
           >
@@ -41,7 +47,7 @@ const DownloadLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 0;
+  padding: 8.5rem 0;
   flex-direction: column;
   gap: 30px;
 `;

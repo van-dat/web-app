@@ -13,6 +13,8 @@ import {
 } from "../../services/webApp.service";
 import { ArrowLeftShort } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
+import ThreeDot from "../threeDot/ThreeDot";
+import { checkSpace } from "../functions/const";
 
 const ContentAssistant = () => {
   const navigate = useNavigate();
@@ -20,8 +22,7 @@ const ContentAssistant = () => {
   const dataAssistant = dataLocal ? JSON.parse(dataLocal) : null;
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [dataLesson, setDataLesson] = useState<any>();
-  const [startMessage, setStartMessage] = useState<boolean>(false);
-  const [choseCategory, setChoseCategory] = useState<string>();
+  const [choseCategory, setChoseCategory] = useState<string>("");
   const [lessonCategory, setLessonCategory] = useState<any>();
   const [conversation, setConversation] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,6 +30,7 @@ const ContentAssistant = () => {
   const [dataMessage, setDataMessage] = useState<any[]>([]);
   const [topicLesson, setTopicLesson] = useState<string>("");
   const [show, setShow] = useState<any>();
+  const [checkInput, setCheckInput] = useState<boolean>(false);
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -78,15 +80,52 @@ const ContentAssistant = () => {
     setLoading(false);
   };
 
+  const fecthAddMessage = async () => {
+    setCheckInput(true);
+    setDataMessage((prev) => [
+      ...prev,
+      {
+        id: 2,
+        content: <ThreeDot />,
+        role: "animation",
+      },
+    ]);
+    const result = await addConversation({
+      conversationId: conversation.conversationId,
+      message: textInput,
+    });
+    if (result?.status === 200) {
+      if (result?.data?.isReachLimit) {
+        setModalShow(true);
+        return;
+      }
+      setDataMessage((prevConversations) =>
+        prevConversations.filter((conversation) => conversation.id !== 2)
+      );
+      setDataMessage((prev) => [
+        ...prev,
+
+        {
+          id: result.data?.data?.assistant.id,
+          createdAt: result.data?.data?.assistant.createdAt,
+          content: result.data?.data?.assistant.content,
+          role: result.data?.data?.assistant.role,
+          voiceUrl: result.data?.data?.assistant.voiceUrl,
+        },
+      ]);
+    }
+    setCheckInput(false);
+  };
+
   const handleBegin = async (value?: string) => {
-    setStartMessage(true);
     setShow(0);
     setTopicLesson("");
     await CreateConversations(value);
   };
 
   const addMessage = async () => {
-    if (textInput == "" || textInput == undefined) return;
+    if (textInput == "" || textInput == undefined || checkSpace(textInput))
+      return;
     if (dataMessage[0] == undefined) {
       setModalShow(true);
       return;
@@ -100,27 +139,7 @@ const ContentAssistant = () => {
       },
     ]);
     setTextInput("");
-    const result = await addConversation({
-      conversationId: conversation.conversationId,
-      message: textInput,
-    });
-    if (result?.status === 200) {
-      if (result?.data?.isReachLimit) {
-        setModalShow(true);
-        return;
-      }
-      setDataMessage((prev) => [
-        ...prev,
-
-        {
-          id: result.data?.data?.assistant.id,
-          createdAt: result.data?.data?.assistant.createdAt,
-          content: result.data?.data?.assistant.content,
-          role: result.data?.data?.assistant.role,
-          voiceUrl: result.data?.data?.assistant.voiceUrl,
-        },
-      ]);
-    }
+    await fecthAddMessage();
   };
 
   const handleAsk = () => {
@@ -175,7 +194,7 @@ const ContentAssistant = () => {
                 {dataAssistant?.position} Lesson
               </TitleSession>
             </div>
-            {startMessage && (
+            {show == 0 && (
               <BoxImage className="userImagePc">
                 <img
                   src={dataAssistant?.chatAvatarUrl}
@@ -221,7 +240,7 @@ const ContentAssistant = () => {
             ))}
           </LayoutLesson>
         </LayoutContentLeft>
-        {startMessage || Number(width < 993) ? (
+        {show == 0 ? (
           <Message
             setModalShow={setModalShow}
             conversations={dataMessage}
@@ -230,9 +249,9 @@ const ContentAssistant = () => {
             actionSend={addMessage}
             textInput={textInput}
             setTextInput={setTextInput}
-            setStartMessage={setStartMessage}
             setShow={setShow}
             setConversations={setDataMessage}
+            checkInput={checkInput}
           />
         ) : (
           <div className="contentRight">
@@ -245,7 +264,9 @@ const ContentAssistant = () => {
               <ArrowLeftShort size={45} color="white" />
             </div>
             <BoxImage className="imageRight">
-              <img src={dataAssistant?.chatAvatarUrl} alt="avatar" />
+              <div className="boxUser">
+                <img src={dataAssistant?.chatAvatarUrl} alt="avatar" />
+              </div>
               <div className="boxBtn">
                 <BtnBegin
                   show={topicLesson}
@@ -282,6 +303,8 @@ const BtnBegin: any = styled.button`
     props.show == ""
       ? "rgba(189, 189, 189, 1)"
       : "linear-gradient(90deg, #01e1ff 0%, #00baff 100%)"};
+  box-shadow: ${(props: any) =>
+    props.show == "" ? "none" : "0px 0px 24px 4px rgba(1, 215, 255, 0.4)"};
 `;
 
 // left

@@ -36,9 +36,8 @@
     93.34% 290.77% at 97.83% 96.62%,
     #0f1425 33.34%,
     #19547e 100%
-    
   );
-  
+
   margin-top: 10rem;
   border: 6px solid #000;
   flex-direction: row;
@@ -200,12 +199,20 @@
       top: 40px;
       left: 20px;
       cursor: pointer;
+      z-index: 99;
     }
     .imageRight {
       width: 100%;
+
+      .boxUser {
+        display: block;
+        height: 500px;
+        width: 100%;
+      }
       img {
         max-width: 550px;
         width: 100%;
+        height: 100%;
       }
     }
 
@@ -213,8 +220,8 @@
       display: flex;
       justify-content: center;
       .btnBegin {
-        width: 75%;
-
+        width: 100%;
+        max-width: 375px;
         height: 70px;
         font-family: Quicksand;
         font-size: 47px;
@@ -222,7 +229,6 @@
         line-height: 58.75px;
         border-radius: 27px;
         color: white;
-        box-shadow: 0px 0px 24px 4px rgba(1, 215, 255, 0.4);
       }
     }
   }

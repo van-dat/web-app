@@ -9,6 +9,8 @@ import "./Message.scss";
 import { useState } from "react";
 import Spinner from "react-bootstrap/esm/Spinner";
 import { ArrowLeftShort } from "react-bootstrap-icons";
+import ThreeDot from "../threeDot/ThreeDot";
+import { checkSpace } from "../functions/const";
 
 type Props = {
   setModalShow: any;
@@ -18,9 +20,9 @@ type Props = {
   actionSend: any;
   setTextInput: any;
   textInput: string;
-  setStartMessage: any;
   setShow: any;
   setConversations: any;
+  checkInput: boolean;
 };
 
 const Message = (props: Props) => {
@@ -32,9 +34,9 @@ const Message = (props: Props) => {
     actionSend,
     setTextInput,
     textInput,
-    setStartMessage,
     setShow,
     setConversations,
+    checkInput,
   } = props;
   const [audio] = useState(new Audio(""));
   const [checkVolume, setCheckVolume] = useState<number>();
@@ -47,6 +49,13 @@ const Message = (props: Props) => {
     }
     setCheckVolume(checkVolume === idCheck ? null : idCheck);
   };
+
+  const handleEnter = (e) => {
+    if (e.keyCode == 13 && !checkInput && !checkSpace(textInput)) {
+      actionSend();
+    }
+  };
+
   return (
     <LayoutContentRight id="message" className="layoutContentRight">
       {loading && (
@@ -60,8 +69,8 @@ const Message = (props: Props) => {
             className="boxBack"
             onClick={() => {
               setShow();
-              setStartMessage(false);
               setConversations([]);
+              setTextInput("");
             }}
           >
             <ArrowLeftShort size={45} color="white" />
@@ -70,13 +79,14 @@ const Message = (props: Props) => {
             conversations.length > 0 &&
             conversations?.map((item: any, index: number) => (
               <Box check={item?.role} key={index}>
-                {item?.role == "assistant" && (
+                {(item?.role == "assistant" || item?.role == "animation") && (
                   <img
                     src={avatarAssistant}
                     alt="avatar-assitant"
                     className="imageChat"
                   />
                 )}
+
                 <BoxMessage className="boxMessage">
                   <TextMessage className="textMessage" check={item?.role}>
                     {item.role == "assistant" && (
@@ -95,7 +105,7 @@ const Message = (props: Props) => {
                     {item?.content}
                   </TextMessage>
                 </BoxMessage>
-                {item?.role == "assistant" ? (
+                {item?.role == "assistant" && (
                   <button onClick={() => setModalShow(true)} className="button">
                     <img
                       src={translateIcon}
@@ -103,7 +113,8 @@ const Message = (props: Props) => {
                       alt="iconTranslate"
                     />
                   </button>
-                ) : (
+                )}
+                {item?.role == "user" && (
                   <button onClick={() => setModalShow(true)} className="button">
                     <img
                       src={light}
@@ -126,11 +137,12 @@ const Message = (props: Props) => {
           <input
             type="text"
             className="inputSend"
+            onKeyDown={(e) => handleEnter(e)}
             onChange={(e) => setTextInput(e.target.value)}
             value={textInput}
           />
           <button
-            disabled={textInput == "" ? true : false}
+            disabled={textInput == "" || checkInput ? true : false}
             onClick={() => actionSend()}
             className="buttonSend"
           >
@@ -159,6 +171,10 @@ const LayoutContentRight = styled.div`
 
 const LayoutMessage = styled.div`
   display: flex;
+  max-height: 500px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   gap: 32px;
   flex-direction: column;
 `;
@@ -172,10 +188,10 @@ const FormSend = styled.div`
 
 const Box: any = styled.div`
   display: flex;
+
   gap: 16px;
   align-items: center;
-  justify-content: ${(props: any) =>
-    props.check == "assistant" ? "start" : "end"};
+  justify-content: ${(props: any) => (props.check == "user" ? "end" : "start")};
 `;
 const BoxMessage: any = styled.div`
   max-width: calc(100% - 50px);
@@ -190,9 +206,9 @@ const TextMessage: any = styled.div`
   text-align: left;
   margin: 0;
   background: ${(props: any) =>
-    props.check == "assistant"
-      ? "rgba(125, 125, 125, 1)"
-      : "rgba(40, 182, 219, 0.85)"};
+    props.check == "user"
+      ? "rgba(40, 182, 219, 0.85)"
+      : "rgba(125, 125, 125, 1)"};
   padding: 7px 16px;
   border-radius: 21px;
 `;
