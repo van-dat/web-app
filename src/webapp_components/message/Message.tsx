@@ -9,7 +9,6 @@ import "./Message.scss";
 import { useState } from "react";
 import Spinner from "react-bootstrap/esm/Spinner";
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import ThreeDot from "../threeDot/ThreeDot";
 import { checkSpace } from "../functions/const";
 
 type Props = {

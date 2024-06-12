@@ -1,5 +1,4 @@
 import "./ThreeDot.scss";
-import { Dot } from "react-bootstrap-icons";
 const ThreeDot = () => {
   return (
     <>
