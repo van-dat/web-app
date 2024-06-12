@@ -51,7 +51,7 @@ const Content = () => {
             <img src={user} alt="image-user" />
           </div>
           <OptionList className="optionList">
-            <OptionTitle>Tutor</OptionTitle>
+            <OptionTitle>Tutors</OptionTitle>
             {listCategory.map((category: any) => (
               <OptionItem
                 className="optionItem"

@@ -65,7 +65,7 @@ const LayoutHeader = styled.div`
 `;
 
 const Logo = styled.a`
-  z-index: 999;
+  z-index: 1;
 `;
 const NavLink: any = styled.a`
   color: ${(props: any) => (props.checkShow ? "black" : "white")};

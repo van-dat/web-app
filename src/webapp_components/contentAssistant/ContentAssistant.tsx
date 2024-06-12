@@ -232,7 +232,7 @@ const ContentAssistant = () => {
             setTextInput={setTextInput}
             setStartMessage={setStartMessage}
             setShow={setShow}
-            setConversations = {setDataMessage}
+            setConversations={setDataMessage}
           />
         ) : (
           <div className="contentRight">
@@ -267,6 +267,7 @@ const ContentAssistant = () => {
 export default ContentAssistant;
 
 const LayoutContent = styled.div`
+  position: relative;
   display: flex;
   z-index: 999;
   padding: 20px;
@@ -354,4 +355,6 @@ const LayoutLesson = styled.div`
   overflow-x: hidden;
 `;
 
-const BoxImage = styled.div``;
+const BoxImage = styled.div`
+  z-index: 10;
+`;
