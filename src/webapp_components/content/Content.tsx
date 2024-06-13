@@ -5,8 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import { getListCategory, getListTutor } from "../../services/webApp.service";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Content = () => {
   const navigate = useNavigate();
   const [choseOption, setChoseOption] = useState<number>(2);
@@ -72,13 +70,11 @@ const Content = () => {
               <ItemAssistant
                 key={index}
                 onClick={() => handleClickAssistant(item)}
+                className="itemAssistant"
               >
                 <FormUser>
                   <div className="box-image">
-                    <img
-                      src={item.avatarUrl}
-                      alt="assistant"
-                    />
+                    <img src={item.avatarUrl} alt="assistant" />
                   </div>
                   <FormFlag className="box-flag">
                     <img src={item.flagUrl} alt="flag" />
@@ -166,7 +162,6 @@ const BackgroundAssistant = styled.div`
 `;
 const ListAssistant = styled.div`
   display: grid;
-  
 `;
 const ItemAssistant = styled.div`
   max-width: 191px;
@@ -175,7 +170,6 @@ const ItemAssistant = styled.div`
   gap: 5px;
   border-radius: 25px;
   border: 1px solid #fff;
-  opacity: 0px;
   background: linear-gradient(179.99deg, #41c8ed 5.11%, #00648a 84.34%);
   display: flex;
   flex-direction: column;

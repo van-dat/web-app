@@ -1,5 +1,7 @@
 #content {
   .layoutOption {
+    z-index: 10;
+
     @media screen and (max-width: 993px) {
       flex-direction: column;
       align-items: center;
@@ -33,8 +35,15 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       padding: 0 6px;
     }
-    @media screen and (max-width: 367px) {
+    @media screen and (max-width: 400px) {
       gap: 6px;
+      width: 100%;
+    }
+    .itemAssistant {
+      
+      @media screen and (min-width: 400px) {
+        min-width: 190px;
+      }
     }
     .box-image {
       max-width: 90px;

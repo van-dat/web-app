@@ -6,7 +6,7 @@ import record from "../../assets/record.svg";
 import translateIcon from "../../assets/translate.svg";
 import light from "../../assets/light.svg";
 import "./Message.scss";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Spinner from "react-bootstrap/esm/Spinner";
 import { ArrowLeftShort } from "react-bootstrap-icons";
 import { checkSpace } from "../functions/const";
@@ -37,14 +37,14 @@ const Message = (props: Props) => {
     setConversations,
     checkInput,
   } = props;
-  const [audio] = useState(new Audio(""));
-  const [checkVolume, setCheckVolume] = useState<number>();
+  const audioRef = useRef(new Audio());
+  const [checkVolume, setCheckVolume] = useState<number | null>(null);
   const handleCheckVolume = (idCheck: any, voiceUrl: string) => {
-    if (audio.paused) {
-      audio.src = voiceUrl;
-      audio.play();
+    if (audioRef.current.paused) {
+      audioRef.current.src = voiceUrl;
+      audioRef.current.play();
     } else {
-      audio.pause();
+      audioRef.current.pause();
     }
     setCheckVolume(checkVolume === idCheck ? null : idCheck);
   };
@@ -87,6 +87,12 @@ const Message = (props: Props) => {
                 )}
 
                 <BoxMessage className="boxMessage">
+                  <audio
+                    ref={audioRef}
+                    src={item?.voiceUrl}
+                    onEnded={() => setCheckVolume(10000)}
+                    className="audio"
+                  />
                   <TextMessage className="textMessage" check={item?.role}>
                     {item.role == "assistant" && (
                       <button
@@ -172,7 +178,7 @@ const LayoutMessage = styled.div`
   display: flex;
   max-height: 500px;
   height: 100%;
- 
+
   gap: 32px;
   flex-direction: column;
 `;

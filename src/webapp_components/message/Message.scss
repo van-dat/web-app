@@ -91,6 +91,9 @@
     border: none;
   }
   .boxMessage {
+    .audio {
+      display: none;
+    }
     .textMessage {
       font-size: 19px;
 
