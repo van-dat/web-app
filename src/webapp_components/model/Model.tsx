@@ -23,17 +23,17 @@ const Model = (props: Props) => {
         <Modal.Body>
           <DownloadLayout>
             {limit ? (
-              <DownloadTitle>
+              <DownloadTitle className="TitleLimit">
                 You've reached your word limit! <br /> Download the app to
                 continue chatting.
               </DownloadTitle>
             ) : (
-              <DownloadTitle>
+              <DownloadTitle className="TitleDownload">
                 Download the app to use this feature.
               </DownloadTitle>
             )}
-            <DownloadBtn>
-              <BtnAppStore
+            <DownloadBtn className="boxIcon">
+              <BtnDownload className="imgBox"
                 onClick={() => {
                   window.open(
                     "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355",
@@ -48,8 +48,8 @@ const Model = (props: Props) => {
                   height={84}
                   alt="image-app-store"
                 />
-              </BtnAppStore>
-              <BtnChPlay
+              </BtnDownload>
+              <BtnDownload className="imgBox"
                 onClick={() => {
                   window.open(
                     "https://play.google.com/store/apps/details?id=com.english7esl",
@@ -59,7 +59,7 @@ const Model = (props: Props) => {
                 }}
               >
                 <img src={chPlay} width={279} height={84} alt="image-chPlay" />
-              </BtnChPlay>
+              </BtnDownload>
             </DownloadBtn>
           </DownloadLayout>
         </Modal.Body>
@@ -72,16 +72,14 @@ const DownloadLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   flex-direction: column;
   gap: 30px;
 `;
 
 const DownloadTitle = styled.div`
   font-family: Quicksand;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 34px;
+  
   text-align: center;
 `;
 const DownloadBtn = styled.div`
@@ -89,11 +87,8 @@ const DownloadBtn = styled.div`
   gap: 16px;
 `;
 
-const BtnChPlay = styled.button`
+const BtnDownload = styled.button`
   background-color: transparent;
   border: none;
 `;
-const BtnAppStore = styled.button`
-  background-color: transparent;
-  border: none;
-`;
+
