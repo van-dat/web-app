@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import appStore from "../../assets/AppStore.svg";
 import chPlay from "../../assets/CHPlayStore.svg";
+import "./BoxDonwload.scss"
 
 const BoxDownload = () => {
   return (

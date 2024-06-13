@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Header from "./Header";
-import BoxDownload from "./BoxDownload";
 import Footer from "./Footer";
 import theme1 from "../../assets/img/theme1.svg";
 import theme2 from "../../assets/img/theme2.svg";
 import { Outlet } from "react-router-dom";
+import BoxDownload from "../boxDownload/BoxDownload";
+import Header from "../header/Header";
 
 const Home = () => {
   return (

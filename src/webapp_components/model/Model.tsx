@@ -9,11 +9,12 @@ type Props = {
   limit?: boolean;
 };
 const Model = (props: Props) => {
-  const { limit } = props;
+  const { limit, show, onHide } = props;
   return (
     <>
       <Modal
-        {...props}
+        show={show}
+        onHide={onHide}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered

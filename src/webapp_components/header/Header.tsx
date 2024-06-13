@@ -2,6 +2,7 @@ import styled from "styled-components";
 import logo from "../../assets/logo.svg";
 import { List } from "react-bootstrap-icons";
 import { useState } from "react";
+import "./Header.scss";
 
 const Header = () => {
   const [checkShow, setCheckShow] = useState<boolean>(false);
@@ -12,20 +13,20 @@ const Header = () => {
           <Logo href="#">
             <img src={logo} alt="logo" />
           </Logo>
-          <BoxNav checkShow={checkShow} className="nav__menu" id="nav-menu">
+          <BoxNav check={checkShow} className="nav__menu" id="nav-menu">
             <ul className="nav__list">
               <li className="nav__item">
-                <NavLink checkShow={checkShow} href="" className="nav__link">
+                <NavLink check={checkShow} href="#" className="nav__link">
                   Learn
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink checkShow={checkShow} href="" className="nav__link">
+                <NavLink check={checkShow} href="#" className="nav__link">
                   AI Writing Assistance
                 </NavLink>
               </li>
               <li className="nav__item">
-                <NavLink checkShow={checkShow} href="" className="nav__link">
+                <NavLink check={checkShow} href="#" className="nav__link">
                   Words
                 </NavLink>
               </li>
@@ -68,11 +69,11 @@ const Logo = styled.a`
   z-index: 1;
 `;
 const NavLink: any = styled.a`
-  color: ${(props: any) => (props.checkShow ? "black" : "white")};
+  color: ${(props: any) => (props.check ? "black" : "white")};
   text-decoration: none;
   text-transform: capitalize;
 `;
 
 const BoxNav: any = styled.div`
-  top: ${(props: any) => (props.checkShow ? "0" : "-150%")};
+  top: ${(props: any) => (props.check ? "0" : "-150%")};
 `;

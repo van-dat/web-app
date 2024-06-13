@@ -51,14 +51,11 @@ const ContentAssistant = () => {
     setWidth(window.innerWidth);
   };
   useEffect(() => {
+    setShow(5);
+    fetchData();
     window.scrollTo(0, 0);
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
-  }, []);
-
-  useEffect(() => {
-    setShow(5);
-    fetchData();
   }, []);
 
   const handleChoesCategory = (value: string, item: any) => {
@@ -136,13 +133,18 @@ const ContentAssistant = () => {
   };
 
   const handleBegin = async (value?: string) => {
+    if (width < 994) {
+      setTimeout(() => {
+        window.scrollTo({ top: 1300, behavior: "smooth" });
+      }, 100);
+    }
     setShow(0);
     setTopicLesson("");
-    if (width < 994) {
-      window.scrollTo(0, 1300);
-    }
 
     await CreateConversations(value);
+  };
+  const handleAsk = async () => {
+    await handleBegin("hi");
   };
 
   const addMessage = async () => {
@@ -162,14 +164,6 @@ const ContentAssistant = () => {
     ]);
     setTextInput("");
     await fecthAddMessage();
-  };
-
-  const handleAsk = () => {
-    setTopicLesson("hi");
-    if (width < 994) {
-      window.scrollTo(0, 1300);
-    }
-    handleBegin("hi");
   };
 
   return (
@@ -208,7 +202,9 @@ const ContentAssistant = () => {
               <ButtonQuestion
                 disabled={show == 1 || show == 0 ? true : false}
                 show={show}
-                onClick={() => handleAsk()}
+                onClick={() => {
+                  handleAsk();
+                }}
                 className="buttonQuestion"
               >
                 Ask Questions

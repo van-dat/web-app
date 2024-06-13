@@ -1,76 +1,4 @@
-header {
-  position: relative;
-  @media screen and (max-width: 993px) {
-    display: flex;
-    justify-content: center;
-  }
-  .nav__menu {
-    @media screen and (max-width: 993px) {
-      position: fixed;
-      width: 40%;
-      background: #fff;
-      right: 0;
-      padding: 2.5rem 0;
-      transition: 0.4s;
-      z-index: var(--z-fixed);
-      border-radius: 0 0 1.5rem 1.5rem;
-      color: #000;
-      .nav__list {
-        row-gap: 0;
-        line-height: 50px;
-      }
-    }
-    @media screen and (max-width: 560px) {
-      width: 100%;
-      z-index: 99;
-    }
-  }
-  .nav__list {
-    flex-direction: row;
-    column-gap: 3rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    font-family: Quicksand;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 21.25px;
-    @media screen and (max-width: 993px) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      row-gap: 1.5rem;
-      z-index: 20;
-      font-family: Quicksand;
-      font-weight: 700;
-      line-height: 60px;
-      color: #000;
-    }
-  }
 
-  .nav__close {
-    display: none;
-    font-size: 1.8rem;
-    position: absolute;
-    right: 0.7rem;
-    cursor: pointer;
-    @media screen and (max-width: 993px) {
-      top: 0;
-      font-size: 20px;
-      display: block;
-    }
-  }
-  .nav__toggle {
-    display: none;
-    position: absolute;
-    top: 30%;
-    right: 10px;
-    @media screen and (max-width: 993px) {
-      display: block;
-    }
-  }
-}
 // footer
 footer {
   background: rgba(31, 31, 31, 1);
@@ -135,31 +63,7 @@ footer {
   }
 }
 //  Download
-.DownloadTitle {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 55px;
-  background: url(../../);
 
-  @media screen and (max-width: 993px) {
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 21px;
-  }
-}
-
-.boxDownload {
-  @media screen and (max-width: 993px) {
-    flex-direction: column;
-  }
-
-  .btnDownload {
-    @media screen and (max-width: 993px) {
-      width: 178px;
-      height: auto;
-    }
-  }
-}
 // theme
 .theme1{
   position: absolute;

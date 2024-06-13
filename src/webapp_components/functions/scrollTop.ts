@@ -1,4 +1,9 @@
-export const ScrollTop = async (value: any, scrollToBottom: any) => {
+export const ScrollTop = async (
+  value: any,
+  scrollToBottom: any,
+) => {
+ 
+
   const observer = new MutationObserver(() => {
     scrollToBottom(value);
   });
