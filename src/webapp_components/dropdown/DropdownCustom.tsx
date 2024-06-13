@@ -22,11 +22,11 @@ const DropdownCustom = (props: Props) => {
     width,
   } = props;
   const [isShow, setIsShow] = useState<boolean>(false);
-  const [choesLession, setChoesLession] = useState<number>(1);
+  const [choseLesson, setChoseLesson] = useState<number>(1);
   const handleChoseLesson = (lessonId: any, titleLesson: string) => {
     if (show !== 0 && show !== 2) {
       setShow(1);
-      setTopicLesson(titleLesson), setChoesLession(lessonId);
+      setTopicLesson(titleLesson), setChoseLesson(lessonId);
       if (width < 994 && titleLesson != "") {
         handleBegin(titleLesson);
         
@@ -57,7 +57,7 @@ const DropdownCustom = (props: Props) => {
         {lessons.map((item: any, index: number) => (
           <DropDownItem
             show={show}
-            choesLession={choesLession}
+            lesson={choseLesson}
             key={index}
             onClick={() => {
               handleChoseLesson(item.lessonId, item.titleLesson);
@@ -120,9 +120,9 @@ const DropDownItem: any = styled.p`
   font-weight: 400;
   line-height: 27px;
   background: ${(props: any) =>
-    props.choes == props.choesLession && props.show == 0
+    props.choes == props.lesson && props.show == 0
       ? "linear-gradient(90deg, #BDBDBD 0%, rgba(39, 48, 65, 0) 100%)"
-      : props.choes == props.choesLession
+      : props.choes == props.lesson
       ? "linear-gradient(90deg, #35a5e4 0%, rgba(39, 48, 65, 0) 100%)"
       : "transparent"};
   border-radius: 7px;

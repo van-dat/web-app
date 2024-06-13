@@ -30,10 +30,11 @@ const Content = () => {
     fetchDataTutor();
   }, []);
 
-  const handleClickAssistant = (assistant: any) => {
-    const jsonData = JSON.stringify(assistant);
+  const handleClickAssistant = (item: any) => {
+    const jsonData = JSON.stringify(item);
     localStorage.setItem("data", jsonData);
-    navigate(`${assistant.assistantId}`);
+    const name = item?.assistantName.toLowerCase().replace(" ", "-");  
+    navigate(`/${name}`);
   };
 
   const handleChangeCategory = useCallback((categoryId: number) => {
@@ -54,7 +55,7 @@ const Content = () => {
               <OptionItem
                 className="optionItem"
                 value={category.categoryId}
-                choseOption={choseOption}
+                option={choseOption}
                 key={category.categoryId}
                 onClick={() => handleChangeCategory(category.categoryId)}
               >
@@ -131,7 +132,7 @@ const OptionItem: any = styled.div`
   padding-left: 10px;
   border-radius: 7px;
   background: ${(props: any) =>
-    props.value == props.choseOption
+    props.value == props.option
       ? "linear-gradient(179.99deg, #41c8ed 5.11%, #00648a 84.34%);"
       : "rgba(84, 98, 111, 1);"};
   font-family: Poppins;
