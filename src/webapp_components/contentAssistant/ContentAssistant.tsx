@@ -105,6 +105,9 @@ const ContentAssistant = () => {
     });
     if (result?.status === 200) {
       if (result?.data?.isReachLimit) {
+        setDataMessage((prevConversations) =>
+          prevConversations.filter((conversation) => conversation.id !== 2)
+        );
         setModalShow(true);
         setLimit(true);
         return;
@@ -164,10 +167,7 @@ const ContentAssistant = () => {
   const handleAsk = () => {
     setTopicLesson("hi");
     if (width < 994) {
-      const element = document.getElementById("message");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      window.scrollTo(0, 1300);
     }
     handleBegin("hi");
   };

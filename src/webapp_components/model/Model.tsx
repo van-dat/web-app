@@ -34,8 +34,11 @@ const Model = (props: Props) => {
             <DownloadBtn>
               <BtnAppStore
                 onClick={() => {
-                  window.location.href =
-                    "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355";
+                  window.open(
+                    "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355",
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
                 }}
               >
                 <img
@@ -47,8 +50,11 @@ const Model = (props: Props) => {
               </BtnAppStore>
               <BtnChPlay
                 onClick={() => {
-                  window.location.href =
-                    "https://play.google.com/store/apps/details?id=com.english7esl";
+                  window.open(
+                    "https://play.google.com/store/apps/details?id=com.english7esl",
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
                 }}
               >
                 <img src={chPlay} width={279} height={84} alt="image-chPlay" />
