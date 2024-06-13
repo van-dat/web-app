@@ -6,8 +6,10 @@ import chPlay from "../../assets/CHPlayStore.svg";
 type Props = {
   show: boolean;
   onHide: any;
+  limit?: boolean;
 };
 const Model = (props: Props) => {
+  const { limit } = props;
   return (
     <>
       <Modal
@@ -19,9 +21,16 @@ const Model = (props: Props) => {
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <DownloadLayout>
-            <DownloadTitle>
-              Download the app to use this feature.
-            </DownloadTitle>
+            {limit ? (
+              <DownloadTitle>
+                You've reached your word limit! <br /> Download the app to
+                continue chatting.
+              </DownloadTitle>
+            ) : (
+              <DownloadTitle>
+                Download the app to use this feature.
+              </DownloadTitle>
+            )}
             <DownloadBtn>
               <BtnAppStore
                 onClick={() => {

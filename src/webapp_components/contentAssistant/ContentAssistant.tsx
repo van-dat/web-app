@@ -34,6 +34,7 @@ const ContentAssistant = () => {
   const [topicLesson, setTopicLesson] = useState<string>("");
   const [show, setShow] = useState<any>();
   const [checkInput, setCheckInput] = useState<boolean>(false);
+  const [limit, setLimit] = useState<boolean>(false);
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -79,6 +80,7 @@ const ContentAssistant = () => {
       }
       if (responsive?.data?.isReachLimit) {
         setModalShow(true);
+        setLimit(true);
       }
     } catch (error) {}
     setLoading(false);
@@ -104,6 +106,7 @@ const ContentAssistant = () => {
     if (result?.status === 200) {
       if (result?.data?.isReachLimit) {
         setModalShow(true);
+        setLimit(true);
         return;
       }
       setDataMessage((prevConversations) =>
@@ -132,10 +135,10 @@ const ContentAssistant = () => {
   const handleBegin = async (value?: string) => {
     setShow(0);
     setTopicLesson("");
-    if(width < 994) {
+    if (width < 994) {
       window.scrollTo(0, 1300);
     }
-    
+
     await CreateConversations(value);
   };
 
@@ -181,7 +184,11 @@ const ContentAssistant = () => {
         </BoxImage>
       </div>
       <LayoutContent id="LayoutContent" className="container-lg ">
-        <Model show={modalShow} onHide={() => setModalShow(false)} />
+        <Model
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          limit={limit}
+        />
 
         <LayoutContentLeft className="contentLeft">
           <div className="contentAssistant">
