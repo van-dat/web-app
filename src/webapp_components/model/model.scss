@@ -19,3 +19,36 @@
   }
 }
 
+.TitleDownload {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  @media screen and (max-width: 550px) {
+    font-size: 21px;
+    line-height: 21px;
+  }
+}
+
+.TitleLimit {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 34px;
+  @media screen and (max-width: 550px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.boxIcon {
+  @media screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+
+.imgBox {
+  img {
+    @media screen and (max-width: 550px) {
+      width: 200px;
+    }
+  }
+}

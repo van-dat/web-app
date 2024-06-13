@@ -1,25 +1,24 @@
 .DownloadTitle {
-    font-size: 42px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 55px;
+
+  @media screen and (max-width: 993px) {
+    font-size: 21px;
     font-weight: 700;
-    line-height: 55px;
-    background: url(../../);
-  
+    line-height: 21px;
+  }
+}
+
+.boxDownload {
+  @media screen and (max-width: 993px) {
+    flex-direction: column;
+  }
+
+  .btnDownload {
     @media screen and (max-width: 993px) {
-      font-size: 21px;
-      font-weight: 700;
-      line-height: 21px;
+      width: 234px;
+      height: auto;
     }
   }
-  
-  .boxDownload {
-    @media screen and (max-width: 993px) {
-      flex-direction: column;
-    }
-  
-    .btnDownload {
-      @media screen and (max-width: 993px) {
-        width: 178px;
-        height: auto;
-      }
-    }
-  }
+}
