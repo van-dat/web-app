@@ -16,6 +16,9 @@
   }
 
   .btnDownload {
+    &:hover {
+      opacity: 0.8;
+    }
     @media screen and (max-width: 993px) {
       width: 234px;
       height: auto;

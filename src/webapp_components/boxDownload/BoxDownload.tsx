@@ -12,7 +12,7 @@ const BoxDownload = () => {
           experience!
         </DownloadTitle>
         <DownloadBtn className="boxDownload">
-          <BtnAppStore
+          <BtnBox
             onClick={() => {
               window.open(
                 "https://apps.apple.com/vn/app/7esl-ai-speak-learn-english/id6477322355",
@@ -23,8 +23,8 @@ const BoxDownload = () => {
             className="btnDownload"
           >
             <img src={appStore} alt="image-app-store" />
-          </BtnAppStore>
-          <BtnChPlay
+          </BtnBox>
+          <BtnBox
             onClick={() => {
               window.open(
                 "https://play.google.com/store/apps/details?id=com.english7esl",
@@ -35,7 +35,7 @@ const BoxDownload = () => {
             className="btnDownload"
           >
             <img src={chPlay} alt="image-chPlay" />
-          </BtnChPlay>
+          </BtnBox>
         </DownloadBtn>
       </DownloadLayout>
     </>
@@ -64,11 +64,8 @@ const DownloadBtn = styled.div`
   gap: 16px;
 `;
 
-const BtnChPlay = styled.button`
+const BtnBox = styled.button`
   background-color: transparent;
   border: none;
 `;
-const BtnAppStore = styled.button`
-  background-color: transparent;
-  border: none;
-`;
+

@@ -39,14 +39,15 @@ const Message = (props: Props) => {
   } = props;
   const audioRef = useRef(new Audio());
   const [checkVolume, setCheckVolume] = useState<number | null>(null);
-  const handleCheckVolume = (idCheck: any, voiceUrl: string) => {
-    if (audioRef.current.paused) {
-      audioRef.current.src = voiceUrl;
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
-    setCheckVolume(checkVolume === idCheck ? null : idCheck);
+  const handleCheckVolume = () => {
+    setModalShow(true);
+    // if (audioRef.current.paused) {
+    //   audioRef.current.src = voiceUrl;
+    //   audioRef.current.play();
+    // } else {
+    //   audioRef.current.pause();
+    // }
+    // setCheckVolume(checkVolume === idCheck ? null : idCheck);
   };
 
   const handleEnter = async (e) => {
@@ -97,7 +98,7 @@ const Message = (props: Props) => {
                     {item.role == "assistant" && (
                       <button
                         onClick={() =>
-                          handleCheckVolume(item?.id, item.voiceUrl)
+                          handleCheckVolume()
                         }
                         className="buttonVolume"
                       >
@@ -147,11 +148,11 @@ const Message = (props: Props) => {
             value={textInput}
           />
           <button
-            disabled={textInput == "" || checkInput ? true : false}
+            disabled={textInput == "" || checkInput || textInput.length > 220 ? true : false}
             onClick={() => actionSend()}
             className="buttonSend"
           >
-            <img src={sendIcon} alt="icon-send" />
+            <IconBtn text={textInput} src={sendIcon} alt="icon-send" />
           </button>
         </FormSend>
       </BoxEnd>
@@ -228,4 +229,12 @@ const BoxRecord = styled.div`
   align-items: center;
   justify-content: center;
   height: 90px;
+`;
+
+const IconBtn: any = styled.img`
+  filter: brightness(0)
+    ${(props: any) =>
+      props.text == " " || checkSpace(props.text) || props.text?.length > 220
+        ? "invert(0.6)"
+        : "invert(0.2)"};
 `;

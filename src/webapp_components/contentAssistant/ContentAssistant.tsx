@@ -36,6 +36,7 @@ const ContentAssistant = () => {
   const [checkInput, setCheckInput] = useState<boolean>(false);
   const [limit, setLimit] = useState<boolean>(false);
 
+
   const [width, setWidth] = useState(window.innerWidth);
 
   const fetchData = async () => {
@@ -144,7 +145,7 @@ const ContentAssistant = () => {
     await CreateConversations(value);
   };
   const handleAsk = async () => {
-    await handleBegin("hi");
+    await handleBegin("I have a question");
   };
 
   const addMessage = async () => {
@@ -180,7 +181,10 @@ const ContentAssistant = () => {
       <LayoutContent id="LayoutContent" className="container-lg ">
         <Model
           show={modalShow}
-          onHide={() => setModalShow(false)}
+          onHide={() => {
+            setModalShow(false);
+            setLimit(false);
+          }}
           limit={limit}
         />
 
@@ -324,6 +328,10 @@ const BtnBegin: any = styled.button`
       : "linear-gradient(90deg, #01e1ff 0%, #00baff 100%)"};
   box-shadow: ${(props: any) =>
     props.show == "" ? "none" : "0px 0px 24px 4px rgba(1, 215, 255, 0.4)"};
+
+  // &:hover {
+  //   opacity: ${(props: any) => (props.show == "" ? 1 : 0.8)};
+  // }
 `;
 
 // left
@@ -373,7 +381,12 @@ const ButtonQuestion: any = styled.button`
   border: none;
   width: 263px;
   padding: 8px 0px;
-  cursor: pointer;
+  &:hover {
+    background: ${(props: any) =>
+      props.show == 0 || props.show == 1
+        ? "rgba(189, 189, 189, 1)"
+        : "linear-gradient(90deg, #01E1FF 0%, #00D1FF 100%)"};
+  }
 `;
 const TitleSession = styled.h2`
   font-family: Quicksand;

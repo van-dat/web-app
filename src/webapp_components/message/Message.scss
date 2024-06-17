@@ -84,8 +84,12 @@
     border-radius: 0 23px 23px 0;
     background-color: transparent;
     padding-right: 16px;
+    
   }
   .buttonRecord {
+    &:hover {
+      opacity: 0.8;
+    }
     background-color: transparent;
     border-radius: 50%;
     border: none;
