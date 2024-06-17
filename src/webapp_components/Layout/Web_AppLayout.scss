@@ -1,0 +1,30 @@
+
+
+//  Download
+
+// theme
+.theme1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: max-content;
+    width: 100%;
+    @media screen and (max-width: 993px) {
+      max-width: 70%;
+      top: 120px;
+    }
+  }
+  
+  
+  .theme2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width:max-content;
+    width: 100%;
+    @media screen and (max-width: 993px) {
+      top: 200px;
+      max-width: 70%;
+    }
+  }
+  

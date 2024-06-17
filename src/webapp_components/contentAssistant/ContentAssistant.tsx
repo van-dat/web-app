@@ -12,15 +12,13 @@ import {
   getLessonByAssistant,
 } from "../../services/webApp.service";
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import { useNavigate } from "react-router-dom";
 import ThreeDot from "../threeDot/ThreeDot";
-import { checkSpace } from "../functions/const";
+import { checkSpace, redirectToUrl } from "../functions/const";
 import { ScrollTop } from "../functions/scrollTop";
 
 const ContentAssistant = () => {
   let scrollMessage = document.getElementById("layoutMessage");
 
-  const navigate = useNavigate();
   const dataLocal = localStorage.getItem("data") || "";
   const dataAssistant = dataLocal ? JSON.parse(dataLocal) : null;
   const [modalShow, setModalShow] = useState<boolean>(false);
@@ -35,7 +33,6 @@ const ContentAssistant = () => {
   const [show, setShow] = useState<any>();
   const [checkInput, setCheckInput] = useState<boolean>(false);
   const [limit, setLimit] = useState<boolean>(false);
-
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -54,7 +51,10 @@ const ContentAssistant = () => {
   useEffect(() => {
     setShow(5);
     fetchData();
+   setTimeout(() => {
     window.scrollTo(0, 0);
+   }, 100);
+    console.log("object")
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
@@ -281,7 +281,9 @@ const ContentAssistant = () => {
             <div
               className="boxBack"
               onClick={() => {
-                navigate(-1);
+                // navigate(-1);
+                redirectToUrl("/");
+                localStorage.removeItem("data");
               }}
             >
               <ArrowLeftShort size={45} color="white" />

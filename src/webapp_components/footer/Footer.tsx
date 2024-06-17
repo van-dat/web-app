@@ -1,5 +1,5 @@
 import logo from "../../assets/logo.svg";
-import "./Home.scss";
+import "./Footer.scss";
 import facebook from "../../assets/img/facebook.svg";
 import printer from "../../assets/img/printer.svg";
 import youtube from "../../assets/img/youtube.svg";

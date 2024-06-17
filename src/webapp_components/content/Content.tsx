@@ -3,10 +3,9 @@ import user from "../../assets/img/user1.svg";
 import "./Content.scss";
 import { useCallback, useEffect, useState } from "react";
 import { getListCategory, getListTutor } from "../../services/webApp.service";
-import { useNavigate } from "react-router-dom";
+import { redirectToUrl } from "../functions/const";
 
 const Content = () => {
-  const navigate = useNavigate();
   const [choseOption, setChoseOption] = useState<number>(2);
   const [tutorList, setTutorList] = useState([]);
   const [listCategory, setListCategory] = useState([]);
@@ -33,8 +32,8 @@ const Content = () => {
   const handleClickAssistant = (item: any) => {
     const jsonData = JSON.stringify(item);
     localStorage.setItem("data", jsonData);
-    const name = item?.assistantName.toLowerCase().replace(" ", "-");  
-    navigate(`/${name}`);
+    const name = item?.assistantName.toLowerCase().replace(" ", "-");
+    redirectToUrl(name);
   };
 
   const handleChangeCategory = useCallback((categoryId: number) => {
