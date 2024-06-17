@@ -39,7 +39,7 @@ const Message = (props: Props) => {
   } = props;
   const audioRef = useRef(new Audio());
   const [checkVolume, setCheckVolume] = useState<number | null>(null);
-  const handleCheckVolume = (idCheck: any, voiceUrl: string) => {
+  const handleCheckVolume = () => {
     setModalShow(true);
     // if (audioRef.current.paused) {
     //   audioRef.current.src = voiceUrl;
@@ -98,7 +98,7 @@ const Message = (props: Props) => {
                     {item.role == "assistant" && (
                       <button
                         onClick={() =>
-                          handleCheckVolume(item?.id, item.voiceUrl)
+                          handleCheckVolume()
                         }
                         className="buttonVolume"
                       >
