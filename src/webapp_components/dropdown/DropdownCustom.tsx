@@ -29,7 +29,6 @@ const DropdownCustom = (props: Props) => {
       setTopicLesson(titleLesson), setChoseLesson(lessonId);
       if (width < 994 && titleLesson != "") {
         handleBegin(titleLesson);
-        
       }
     }
   };
@@ -59,6 +58,7 @@ const DropdownCustom = (props: Props) => {
             show={show}
             lesson={choseLesson}
             key={index}
+            className="dropDownItem"
             onClick={() => {
               handleChoseLesson(item.lessonId, item.titleLesson);
             }}
@@ -84,8 +84,14 @@ const LayoutDropDown: any = styled.div`
   padding: 5px 20px;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
+  cursor: ${(props: any) =>
+    props.show == 0 || props.show == 2 ? "default" : "pointer"};
   width: 100%;
+
+  &:hover {
+    background: ${(props: any) => (props.show == 0 || props.show == 2 ? "rgba(189, 189, 189, 1)" : "linear-gradient(269.32deg, #1996F1 0.34%, #01C2FF 99.76%)")};
+  }
+
 `;
 const TitleDropDown = styled.div`
   display: flex;
@@ -128,5 +134,13 @@ const DropDownItem: any = styled.p`
   border-radius: 7px;
   color: rgba(255, 255, 255, 1);
   margin: 0;
-  cursor: pointer;
+  cursor: ${(props: any) => (props.show == 0 ? "default" : "pointer")};
+  &:hover {
+    background: ${(props: any) =>
+      props.choes == props.lesson && props.show == 0
+        ? "linear-gradient(90deg, #BDBDBD 0%, rgba(39, 48, 65, 0) 100%)"
+        : props.show == 0
+        ? "transparent"
+        : "linear-gradient(90deg, #35a5e4 0%, rgba(39, 48, 65, 0) 100%)"};
+  }
 `;

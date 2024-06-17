@@ -54,6 +54,11 @@ footer {
     color: white;
   }
   .footer__link {
+    a {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
     display: flex;
     gap: 8px;
     padding-left: 36px;
