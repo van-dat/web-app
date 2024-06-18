@@ -9,8 +9,8 @@ import ContentAssistant from "../contentAssistant/ContentAssistant";
 import BoxDownload from "../boxDownload/BoxDownload";
 
 const WebAppLayout = () => {
-  const dataLocal = localStorage.getItem("data") || "";
-
+  const url = new URL(window.location.href);
+  const path = url.pathname; 
     
   return (
     <HomeLayout>
@@ -22,7 +22,7 @@ const WebAppLayout = () => {
       </HomeTheme2>
 
       <Header />
-      { dataLocal ? <ContentAssistant /> : <Content />}
+      {path === "/" ? <Content /> : <ContentAssistant />}
       <BoxDownload />
       <Footer />
     </HomeLayout>
