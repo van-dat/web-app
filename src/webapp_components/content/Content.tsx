@@ -3,9 +3,12 @@ import user from "../../assets/img/user1.svg";
 import "./Content.scss";
 import { useCallback, useEffect, useState } from "react";
 import { getListCategory, getListTutor } from "../../services/webApp.service";
-import { redirectToUrl } from "../functions/const";
 
-const Content = () => {
+type Props = {
+  url: any;
+};
+const Content = (props: Props) => {
+  const { url } = props;
   const [choseOption, setChoseOption] = useState<number>(2);
   const [tutorList, setTutorList] = useState([]);
   const [listCategory, setListCategory] = useState([]);
@@ -29,11 +32,13 @@ const Content = () => {
     fetchDataTutor();
   }, []);
 
-  const handleClickAssistant = (item: any) => {
+  const handleClickAssistant = (item: any, e) => {
     const jsonData = JSON.stringify(item);
     localStorage.setItem("data", jsonData);
     const name = item?.assistantName.toLowerCase().replace(" ", "-");
-    redirectToUrl(name);
+    e.preventDefault();
+    window.history.pushState({}, "", url + name);
+    window.location.reload();
   };
 
   const handleChangeCategory = useCallback((categoryId: number) => {
@@ -69,7 +74,7 @@ const Content = () => {
             {tutorList.map((item: any, index: number) => (
               <ItemAssistant
                 key={index}
-                onClick={() => handleClickAssistant(item)}
+                onClick={(e) => handleClickAssistant(item, e)}
                 className="itemAssistant"
               >
                 <FormUser>
@@ -163,7 +168,9 @@ const BackgroundAssistant = styled.div`
 const ListAssistant = styled.div`
   display: grid;
 `;
-const ItemAssistant = styled.div`
+const ItemAssistant = styled.a`
+  color: white;
+  text-decoration: none;
   max-width: 191px;
   max-height: 250px;
   padding: 12px 16px 0px 16px;
@@ -176,6 +183,9 @@ const ItemAssistant = styled.div`
   align-items: center;
   z-index: 999;
   cursor: pointer;
+  &:hover {
+    color: white;
+  }
 `;
 const FormUser = styled.div`
   position: relative;

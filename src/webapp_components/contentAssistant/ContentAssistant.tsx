@@ -13,8 +13,9 @@ import {
 } from "../../services/webApp.service";
 import { ArrowLeftShort } from "react-bootstrap-icons";
 import ThreeDot from "../threeDot/ThreeDot";
-import { checkSpace, redirectToUrl } from "../functions/const";
+import { checkSpace } from "../functions/const";
 import { ScrollTop } from "../functions/scrollTop";
+
 
 const ContentAssistant = () => {
   let scrollMessage = document.getElementById("layoutMessage");
@@ -281,9 +282,11 @@ const ContentAssistant = () => {
             <div
               className="boxBack"
               onClick={() => {
-                // navigate(-1);
-                redirectToUrl("/");
+                window.history.back();
                 localStorage.removeItem("data");
+                setTimeout(() => {
+                  window.location.reload();
+                }, 100);
               }}
             >
               <ArrowLeftShort size={45} color="white" />

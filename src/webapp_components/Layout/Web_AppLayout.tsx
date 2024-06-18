@@ -22,7 +22,7 @@ const WebAppLayout = () => {
       </HomeTheme2>
 
       <Header />
-      {path === "/" ? <Content /> : <ContentAssistant />}
+      {path === "/" ? <Content url={path} /> : <ContentAssistant />}
       <BoxDownload />
       <Footer />
     </HomeLayout>
