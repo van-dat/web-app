@@ -4,11 +4,8 @@ import "./Content.scss";
 import { useCallback, useEffect, useState } from "react";
 import { getListCategory, getListTutor } from "../../services/webApp.service";
 
-type Props = {
-  url: any;
-};
-const Content = (props: Props) => {
-  const { url } = props;
+
+const Content = () => {
   const [choseOption, setChoseOption] = useState<number>(2);
   const [tutorList, setTutorList] = useState([]);
   const [listCategory, setListCategory] = useState([]);
@@ -37,7 +34,7 @@ const Content = (props: Props) => {
     localStorage.setItem("data", jsonData);
     const name = item?.assistantName.toLowerCase().replace(" ", "-");
     e.preventDefault();
-    window.history.pushState({}, "", url + name);
+    window.history.pushState({}, "","/auth?name=" + name);
     window.location.reload();
   };
 
@@ -73,6 +70,9 @@ const Content = (props: Props) => {
           <ListAssistant className="listAssistant">
             {tutorList.map((item: any, index: number) => (
               <ItemAssistant
+                href={`/auth?name=${item?.assistantName
+                  .toLowerCase()
+                  .replace(" ", "-")}`}
                 key={index}
                 onClick={(e) => handleClickAssistant(item, e)}
                 className="itemAssistant"

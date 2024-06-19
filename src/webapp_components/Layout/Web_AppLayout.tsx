@@ -9,9 +9,10 @@ import ContentAssistant from "../contentAssistant/ContentAssistant";
 import BoxDownload from "../boxDownload/BoxDownload";
 
 const WebAppLayout = () => {
-  const url = new URL(window.location.href);
-  const path = url.pathname; 
-    
+  const url = window.location.href;
+  const isHome = url.indexOf("web-app") > -1;
+  const isAuth = url.indexOf("auth") > -1;
+
   return (
     <HomeLayout>
       <HomeTheme className="theme1">
@@ -22,7 +23,8 @@ const WebAppLayout = () => {
       </HomeTheme2>
 
       <Header />
-      {path === "/" ? <Content url={path} /> : <ContentAssistant />}
+      {isHome && <Content />}
+      {isAuth && <ContentAssistant />}
       <BoxDownload />
       <Footer />
     </HomeLayout>
